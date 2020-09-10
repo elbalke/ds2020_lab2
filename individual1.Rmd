@@ -1,0 +1,68 @@
+---
+title: "Lab 2"
+author: "Elisabeth Balke"
+date: "9/8/2020"
+output: html_document
+---
+
+**Question #1**
+
+```{r, echo=FALSE}
+choco <- read.csv("https://raw.githubusercontent.com/xdaiISU/ds202materials/master/hwlabs/data/choco.csv") 
+ 
+
+boxplot(choco$Rating, 
+        main= "Chocolate Ratings Distribution",
+        xlab= "Rating",
+        col = "light blue",
+        horizontal = TRUE)
+```
+The average of ratings fall between 3.0 and 3.5 on this scale with outliers landing below 2.25.
+
+```{r, echo=FALSE}
+hist(choco$Rating,
+     main = "Chocolate Ratings Distribution",
+     xlab = "Rating",
+     ylab = "Frequency",
+     col = "light blue")
+```
+This histogram shows ratings skew higher frequency with higher ratings, except ratings of 3.0 which total zero in frequency.
+
+**Question #2**
+
+``` {r, echo=FALSE}
+hist(choco$Date,
+     main = "Number Chocolate Ratings/Year",
+     xlab = "Year",
+     ylab = "Number of Ratings",
+     col = "#73b0bf")
+```
+According to this graph, ratings have increased in frequency until after 2014, where there was a trend setting decline. Data for 2020 is not completed yet, which accounts for the low number of ratings.
+
+**Question #3**
+
+Correlation Test
+``` {r, echo= FALSE}
+
+cor.test(choco$Cocoa_Percent, choco$Rating)
+```
+
+Visualization
+```{r, echo=FALSE}
+#install visualization package and run
+library("ggpubr")
+ggscatter(choco, x = "Cocoa_Percent", y = "Rating", 
+          add = "reg.line", conf.int = TRUE, 
+          cor.coef = TRUE, cor.method = "pearson",main= "Relationship of % Cocoa to Rating",
+          xlab = "Percent Cocoa", ylab = "Rating")
+
+```
+There is weak negative correlation (-.15) between the percent of cocoa in chocolate and the overall rating. The p-value of 2.89e-13 makes this highly significant. This means that higher rated chocolates tend to be less dense in terms of cocoa when compared to added ingredients levels. The greatest variation in ratings occurs in the second and third quartiles.
+
+**Question #4**
+?
+
+**Question #5**
+
+1. I'd like to analyze how location of production correlates to ratings. (Which country uses cocoa the best?)
+2. I'd like to analyze how country of bean origin correlates to rating. (Which country grows the best cocoa?)
