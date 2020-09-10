@@ -60,7 +60,27 @@ ggscatter(choco, x = "Cocoa_Percent", y = "Rating",
 There is weak negative correlation (-.15) between the percent of cocoa in chocolate and the overall rating. The p-value of 2.89e-13 makes this highly significant. This means that higher rated chocolates tend to be less dense in terms of cocoa when compared to added ingredients levels. The greatest variation in ratings occurs in the second and third quartiles.
 
 **Question #4**
-?
+```{r, echo=FALSE}
+ggscatter(choco, x = "Characteristics1", y = "Rating", 
+          add = "reg.line", conf.int = TRUE, 
+          cor.coef = TRUE, cor.method = "pearson",
+          xlab = "Characteristics 1", ylab = "Rating")
+
+ggscatter(choco, x = "Characteristics2", y = "Rating", 
+          add = "reg.line", conf.int = TRUE, 
+          cor.coef = TRUE, cor.method = "pearson",
+          xlab = "Characteristics 2", ylab = "Rating")
+
+ggscatter(choco, x = "Characteristics3", y = "Rating", 
+          add = "reg.line", conf.int = TRUE, 
+          cor.coef = TRUE, cor.method = "pearson",
+          xlab = "Characteristics 3", ylab = "Rating")
+
+ggscatter(choco, x = "Characteristics4", y = "Rating", 
+          add = "reg.line", conf.int = TRUE, 
+          cor.coef = TRUE, cor.method = "pearson",
+          xlab = "Characteristics 4", ylab = "Rating")
+```
 
 **Question #5**
 
