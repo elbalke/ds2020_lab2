@@ -1,0 +1,9 @@
+---
+title: "Lab 2 Final Analysis"
+author: "Elisabeth Balke, Caleb Purcell, Isaac Miller"
+date: "9/12/2020"
+output: html_document
+---
+
+**Question 5**
+
