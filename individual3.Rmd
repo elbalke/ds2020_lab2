@@ -1,39 +1,33 @@
 ---
 title: "ds202_isaacdmiller"
 output: html_document
+editor_options: 
+  chunk_output_type: console
 ---
 
-```{r setup, include=FALSE}
+```{r}
 
-choco <- read.csv("https://raw.githubusercontent.com/xdaiISU/ds202materials/master/hwlabs/data/choco.csv") 
+choco <- read.csv("https://raw.githubusercontent.com/xdaiISU/ds202materials/master/hwlabs/data/choco.csv")
 str(choco)
-
-#How are the ratings distributed? Create both a histogram and a boxplot and describe them. Don’t forget to mention outliers, if there are any.
-
-str(choco)
-
-
-#How does the number of ratings depend on the year? Draw a bar chart of the number of reports.
-
-#Do ratings depend on the cacao percentage of a chocolate bar? Create both numerical and graphical summaries, and explain.
-
-#How do different characteristics of the chocolate compare? To elaborate, which characteristics tend to be more favorable and which ones are not? Create both numerical and graphical summaries, and explain
-
-
-
-
-
-
-
-
-
-
-
+summary(choco)
 ```
-How are the ratings distributed? Create both a histogram and a boxplot and describe them. Don’t forget to mention outliers, if there are any.
-
-
+#How are the ratings distributed? Create both a histogram and a boxplot and describe them. Don’t forget to mention outliers, if there are any.
+```{r}
+rate <- choco$Rating
+boxplot(rate)
+hist(rate)
+```
 
 How does the number of ratings depend on the year? Draw a bar chart of the number of reports.
 Do ratings depend on the cacao percentage of a chocolate bar? Create both numerical and graphical summaries, and explain.
+
+```{r}
+```
+
 How do different characteristics of the chocolate compare? To elaborate, which characteristics tend to be more favorable and which ones are not? Create both numerical and graphical summaries, and explain
+```{r}
+```
+
+Brainstorm two analyses you would like to perform with your teammate. Describe in plain language what comparisons are you making. Create suitable numerical and graphical summaries for your analyses. Describe the results.
+```{r}
+```
