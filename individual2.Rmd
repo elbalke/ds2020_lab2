@@ -1,0 +1,66 @@
+---
+title: "individual2.Rmd"
+author: "Caleb Purcell"
+date: "9/12/2020"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+## Searching for the Best Chocolates
+1. How are the ratings distributed? Create both a histogram and a boxplot and describe them. Don’t forget to mention outliers, if there are any.
+
+```{r}
+choco <- read.csv("https://raw.githubusercontent.com/xdaiISU/ds202materials/master/hwlabs/data/choco.csv") 
+
+hist(choco$Rating, main='Distribution of Chocolate Ratings', xlab='Rating', ylab='Frequency', col='brown')
+```
+
+    This histogram shows the distribution of ratings is skewed left.  There are a few possible outliers in the 1.0 to 2.0 range.  One thing to note is that there gaps in the distribution after 2.0 and 3.0 because of the way ratings are assigned in the dataset. The scale of ratings increases by 0.25 and the bin width does not match that, so this explains the gaps.
+    
+```{r}
+boxplot(choco$Rating, main='Distribution of Chocolate Ratings', xlab='Rating', col='brown', horizontal=TRUE)
+```
+
+    This boxplot also shows the distribution is skewed left.  50% of the ratings fall between 3.0 and 3.5, and the median rating is 3.25.  The boxplot defines outliers as any rating that falls below 2.25. 
+    
+2. How does the number of ratings depend on the year? Draw a bar chart of the number of reports.
+
+```{r}
+hist(choco$Date, main="Number of Chocolate Ratings per Year", xlab="Year", ylab="Number of Ratings", col="yellow")
+```
+
+    This chart shows that the number of ratings were generally increasing from 2006 to 2014.  After 2014 the number of ratings begain to fall, with an especially low number of ratings in 2017.  The ratings for 2020 are not complete, so we cannot examine the trend there yet.  
+
+3. Do ratings depend on the cacao percentage of a chocolate bar? Create both numerical and graphical summaries, and explain.
+
+```{r}
+hist(choco$Cocoa_Percent, main='Number of Ratings by Cocao Percentage', xlab='Cocoa Percentage', ylab='Number of Ratings', col='green')
+```
+
+    A large portion of the rated cholate bars had cocoa percentages between 65% and 75%.  The distribution of ratings by cocoa percentage is unimodal and approximatley symmetric with a possible outlier at 100%.
+
+```{r}
+summary(choco$Cocoa_Percent)
+```
+
+    The mean cocoa percentage is 71.65%.  The smallest reported value was 42.00% and the largest reported value was 100.00%.
+
+```{r}
+cor.test(choco$Cocoa_Percent, choco$Rating)
+```
+
+    By performing a correlation test, we can measure the strength of relationship between cocoa percent and rating.  After performing the test, we get r = -0.15.  This value indicates there is a weak, negative linear relationship between cocoa percent and rating.  Because there is not a strong linear relationship between these variables, we cannot conclude that ratings depend on the cocoa percentage of a chocolate bar.
+
+4. How do different characteristics of the chocolate compare? To elaborate, which characteristics tend to be more favorable and which ones are not? Create both numerical and graphical summaries, and explain.
+
+```{r}
+characteristic1 <- factor(choco$Characteristics1)
+lvl1 <- c('gritty', 'dry', 'sandy', 'sweet', 'intense', 'creamy')
+char1 <- factor(characteristic1, levels = lvl1)
+summary(char1)
+boxplot(choco$Rating ~ char1, main='Distribution of Ratings by Characteristics', xlab='Characteristics', ylab='Rating', col='orange')
+```
+
+    There were many characteristics to chose from in Characteristics1, so I chose to analyze 6 common characteristics.  When I selected these characteristics, I chose 3 I thought were positive and 3 I thought were negative.  After analyzing my 6 characteristics, I was able to see which characteristic corresponded with higher ratings.  The least favorable characteristic was "gritty," with a median rating of 2.75.  The most favorable characteritic was "creamy," with a median rating of 3.5.
