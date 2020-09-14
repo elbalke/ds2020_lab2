@@ -7,3 +7,16 @@ output: html_document
 
 **Question 5**
 
+```{r}
+choco <- read.csv("https://raw.githubusercontent.com/xdaiISU/ds202materials/master/hwlabs/data/choco.csv") 
+str(choco) 
+```
+
+Analysis 1 - Rating by bean origin
+
+
+
+Analysis 2 - Rating by country manufacturer
+```{r}
+plot(factor(choco$Bean_Origin), choco$Rating, main = 'Country Average Ratings', xlab= 'Country', ylab='Rating')
+```
