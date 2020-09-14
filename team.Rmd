@@ -31,6 +31,8 @@ boxplot(choco$Rating ~ company1,
 
 
 Analysis 2 - Rating by country manufacturer
+
+     Answer: We are comparing ratings by bean origin grouped by country name.  The resulting plot shows the average ratings for each country in the dataset, so the plot is a bit hard to read, but we can still draw some conclusions.  The first notable finding is that a majority of countries share the same median rating, which is 3.25.  Any rating 2.0 or lower can be considered an outlier for most countries.
 ```{r}
 plot(factor(choco$Bean_Origin), choco$Rating, main = 'Country Average Ratings', xlab= 'Country', ylab='Rating')
 ```
