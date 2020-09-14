@@ -9,10 +9,10 @@ editor_options:
 
 choco <- read.csv("https://raw.githubusercontent.com/xdaiISU/ds202materials/master/hwlabs/data/choco.csv")
 str(choco)
-summary(choco)
 ```
-#How are the ratings distributed? Create both a histogram and a boxplot and describe them. Don’t forget to mention outliers, if there are any.
-  Answer: The histogram of the ratings is left-skewed with 4 outliers. Median is 3.25 and the IQR is 0.5. 
+**1. How are the ratings distributed? Create both a histogram and a boxplot and describe them. Don’t forget to mention outliers, if there are any.**
+
+     Answer: The histogram of the ratings is left-skewed with 4 outliers. Median is 3.25 and the IQR is 0.5. 
 ```{r}
 rate <- choco$Rating
 boxplot(rate, horizontal = TRUE, col = "#58FA82")
@@ -24,10 +24,11 @@ hist(rate,
 summary(rate)
 ```
 
-How does the number of ratings depend on the year? Draw a bar chart of the number of reports.
-Do ratings depend on the cacao percentage of a chocolate bar? Create both numerical and graphical summaries, and explain.
-  Answer: Between the years 2006 and 2014, there is a steady increase in the number of ratings done every year, peaking over 250 in a year. This is then followed by a period of decline between 2015 and 2019. Year 2020 is not complete. The mean and the median year are both 2014. From this summary, I conclude that the number of ratings does depend on the year because in each year, there is a different number of rating on chocolate bars done.
-        Almost all of the ratings done on chocolate bars fall between 60% to 80%. Based on this factor, the ratings do not depend on the coao percentage because the the cocao percentage is merely a characteristic of the chocolate bar and does not determine the number of ratings.
+**How does the number of ratings depend on the year? Draw a bar chart of the number of reports.
+Do ratings depend on the cacao percentage of a chocolate bar? Create both numerical and graphical summaries, and explain**
+
+     Answer: Between the years 2006 and 2014, there is a steady increase in the number of ratings done every year, peaking over 250 in a year. This is then followed by a period of decline between 2015 and 2019. Year 2020 is not complete. The mean and the median year are both 2014. From this summary, I conclude that the number of ratings does depend on the year because in each year, there is a different number of rating on chocolate bars done.
+     Almost all of the ratings done on chocolate bars fall between 60% to 80%. Based on this factor, the ratings do not depend on the coao percentage because the the cocao percentage is merely a characteristic of the chocolate bar and does not determine the number of ratings.
 ```{r}
 hist(choco$Date,
      main = "Distribution of Ratings by Year",
@@ -43,12 +44,31 @@ hist(choco$Cocoa_Percent,
 summary(choco$Cocoa_Percent)
 ```
 
-How do different characteristics of the chocolate compare? To elaborate, which characteristics tend to be more favorable and which ones are not? Create both numerical and graphical summaries, and explain
+**How do different characteristics of the chocolate compare? To elaborate, which characteristics tend to be more favorable and which ones are not? Create both numerical and graphical summaries, and explain**
+
+     Answer: After selecting characteristics with 30+ points and analyzing the distributions, the characteristic that received the best rating was creamy and cocoa, each with a mean of 3.5. Gritty was the worst with a mean score of less than 3.0.
 ```{r}
+str(choco)
+choco$Characteristics1
+ch1<- factor(choco$Characteristics1)
+str(ch1)
+lvl1 <- c('cocoa', 'dry', 'earthy', 'floral', 'fatty', 'gritty', 'intense', 'nutty', 'oily', 'roasty', 'sandy', 'spicy', 'sticky', 'sweet', 'creamy')
+character1 <- factor(ch1, levels = lvl1)
+table (character1)
+boxplot(choco$Rating ~ character1)
+
+lvl2 <- c('gritty', 'dry', 'sandy', 'earthy', 'spicy', 'cocoa', 'creamy')
+character2 <-factor(ch1, levels= lvl2)
+boxplot(choco$Rating ~ character2,
+        main= "Distributions ratings based on Characteristics",
+        xlab= "characteristics",
+        ylab= "Rating",
+        col= "#58FA82")
+summary(character2)
 
 ```
 
-Brainstorm two analyses you would like to perform with your teammate. Describe in plain language what comparisons are you making. Create suitable numerical and graphical summaries for your analyses. Describe the results.
+**Brainstorm two analyses you would like to perform with your teammate. Describe in plain language what comparisons are you making. Create suitable numerical and graphical summaries for your analyses. Describe the results.**
 ```{r}
 
 ```
