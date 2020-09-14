@@ -46,10 +46,9 @@ summary(choco$Cocoa_Percent)
 
 **How do different characteristics of the chocolate compare? To elaborate, which characteristics tend to be more favorable and which ones are not? Create both numerical and graphical summaries, and explain**
 
-     Answer: After selecting characteristics with 30+ points and analyzing the distributions, the characteristic that received the best rating was creamy and cocoa, each with a mean of 3.5. Gritty was the worst with a mean score of less than 3.0.
+     Answer: After selecting characteristics with 30 or more instances, I analyzed the distributions, finding that the characteristics which received the best rating based on mean average was creamy and cocoa, each with a mean value of 3.5. Gritty was the worst with a mean score of less than 3.0.
 ```{r}
-str(choco)
-choco$Characteristics1
+head(choco$Characteristics1)
 ch1<- factor(choco$Characteristics1)
 str(ch1)
 lvl1 <- c('cocoa', 'dry', 'earthy', 'floral', 'fatty', 'gritty', 'intense', 'nutty', 'oily', 'roasty', 'sandy', 'spicy', 'sticky', 'sweet', 'creamy')
@@ -69,6 +68,18 @@ summary(character2)
 ```
 
 **Brainstorm two analyses you would like to perform with your teammate. Describe in plain language what comparisons are you making. Create suitable numerical and graphical summaries for your analyses. Describe the results.**
-```{r}
 
+     Answer: We are comparing ratings by company grouped by company name. After selecting companies with 20 or more chocolate bars, we analyzed the distributions of the boxplots. The company Soma has the best overall chocolate bar rating based on mean average, which is valued above 3.5.
+```{r}
+head(choco$Company)
+cp1<- factor(choco$Company)
+str(cp1)
+cpnames1<- c("Arete", "A. Morin", "Bonnat", "Fresco", "Guittard", "Soma", "Valrhona", "Zotter")
+company1 <- factor(cp1, levels= cpnames1)
+table(company1)
+boxplot(choco$Rating ~ company1,
+        main= "Distributions ratings based on Company with 20+ Bars",
+        xlab= "Companies",
+        ylab= "Rating",
+        col= "#58FA82")
 ```

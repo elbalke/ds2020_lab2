@@ -12,8 +12,22 @@ choco <- read.csv("https://raw.githubusercontent.com/xdaiISU/ds202materials/mast
 str(choco) 
 ```
 
-Analysis 1 - Rating by bean origin
+Analysis 1 - Rating by Company
 
+     Answer: We are comparing ratings by company grouped by company name. After selecting companies with 20 or more chocolate bars, we analyzed the distributions of the boxplots. The company Soma has the best overall chocolate bar rating based on mean average, which is valued above 3.5.
+```{r}
+head(choco$Company)
+cp1<- factor(choco$Company)
+str(cp1)
+cpnames1<- c("Arete", "A. Morin", "Bonnat", "Fresco", "Guittard", "Soma", "Valrhona", "Zotter")
+company1 <- factor(cp1, levels= cpnames1)
+table(company1)
+boxplot(choco$Rating ~ company1,
+        main= "Distributions ratings based on Company",
+        xlab= "Companies",
+        ylab= "Rating",
+        col= "#58FA82")
+```
 
 
 Analysis 2 - Rating by country manufacturer
